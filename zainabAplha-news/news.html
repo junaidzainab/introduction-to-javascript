@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Alpha News</title>
+</head>
+<body>
+    <div class="zcontainer">
+        <div class="colum1">
+            <div id="zadvert">
+                <div><img src="breaking-news-news.gif"></div>
+                <br>
+                <div><h5>Advertisment</h5></div>
+                <div><img src="img3.gif"></div>
+                <div><img src="img2.gif"></div>
+                <div><img src="advert.png"></div>
+            </div><br>
+            <div id="zenter">
+                <div><h5>Entertainment</h5></div>
+                <div><img src="enter.webp"></div><br>
+                <div><img src="fanta.webp"></div>
+            </div>
+        </div>
+        <div class="o-container1">
+            <div class="o-container2">
+                <div><h4>BREAKING NEWS</h4></div>
+                <div class="o-4container" id="o-4container">
+                
+                </div>
+                <div class="o-2columns">
+                    
+                    <div class="o-4div height blue" >
+                        <h4>TOP LATEST NEWS</h4>
+                        <div class="o-4container" id="o-2nd-o-4div"> 
+                            
+                        </div>
+                        
+                        <!-- <div class="o-4container"> 
+                        
+                        </div> -->
+
+                        
+                    </div>
+        
+                    <div>
+                        <div class="o-4div o-height o-border-radius" id="onecorner">
+                            <div class="o-side" >
+                                
+                            </div>
+
+                        </div>
+
+                        <br><br>
+                    
+                        <div class="o-4div o-height o-border-radius" id="onecorner-2">
+                            <div class="o-side" >
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                
+
+                </div>
+
+            </div>
+        </div>
+        <div class="colum3">
+            <div>
+                <h5>Health</h5><br>
+                <img src="mental.webp">
+                <div class="pp"><p><b>Taking care of your mental <br>health is as 
+                    important as eating breakfast</b>. 
+                    As a Student, lecturer, enterpreneurer, you need to 
+                    keep your mental health to check by having a proper and adequate sleep,
+                    take time out to ease out stress and exercise regularly,
+                    talk to a counsellor if the need arises...
+                </p></div>
+            </div><br><br>
+            <div>
+                <h5>Sport</h5><br>
+                <img src="spt.webp">
+                <div class="pp"><p><b>Regular Exercise help...</b><br>
+                    Improving heart health and blood pressure.
+                    Increasing muscle mass and bone strength in inactive individuals.
+                    Reducing body fat.
+                    Building strength, stamina and speed.
+                    Training your brain, improving 
+                    concentration and coordination.</p></div>
+            </div><br><br>
+            <div>
+                <h5>Advertisment</h5>
+                <img src="fanta.webp">
+                <!-- <div><img src="img3.gif"></div> -->
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <h4 id="hig">HIGHLIGHT</h4>
+    <div class="o-4container section" id="demo">
+                
+    </div>
+    <div class="zfooter">
+        <img src="glo.gif">
+    </div>
+    
+
+<script>
+    let list;
+       const url = 'http://newsapi.org/v2/top-headlines?country=ng&apiKey=7ce90f0c6fd14520b17f21a3128dfd2b'
+       fetch(url)
+           .then(response => response.json())
+           .then(data => {
+               //console.log(data.articles[1].description)
+               // first loop to get the 4 images on a row 
+               let  x  = 4;
+               for(let c= 0; c < x ; c++) {
+                   let title = data.articles[c].title;
+                   let image = data.articles[c].urlToImage
+                   let newsurl = data.articles[c].url
+                   document.getElementById('o-4container').innerHTML +=`
+                   <div class="o-4div"> 
+                       <img src="${image}" width="100%" height="200px">
+                       <div> ${title}</div>
+                       <div>
+                           <a href="${newsurl}" target="_blank"> >> Read more </a>
+                       </div>
+                   </div>
+                  `
+               }
+               // loop to get the 12 images 0n grid templates
+               for(let y = 5; y < 9; y ++ ) {
+                   let title1 = data.articles[y].title;
+                   let image1 = data.articles[y].urlToImage
+                   let newsurl1 = data.articles[y].url
+                   document.getElementById('o-2nd-o-4div').innerHTML +=`
+                   <div class="o-4div o-border-left o-border-radius"> 
+                       <img src="${image1}" width="100%">
+                       <div> ${title1}</div>
+                       <div>
+                           <a href="${newsurl1}" target="_blank"> >> Read more </a>
+                       </div>
+                   </div>
+                  `
+               }
+
+               // loop to get news without images 
+               for(let z = 12; z < 20; z ++ ) {
+                   let title2 = data.articles[z].title;
+                   let image2 = data.articles[z].urlToImage
+                   let newsurl2 = data.articles[z].url
+                   document.getElementById('o-2nd-o-4div').innerHTML +=`
+                   <div class="o-4div o-border-left o-border-radius"> 
+                       <img src="${image2}" width="100%">
+                       <div> ${title2}</div>
+                       <div>
+                           <a href="${newsurl2}" target="_blank"> >> Read more </a>
+                       </div>
+                   </div>
+                  `
+               }
+
+               for(let w = 10; w < 14; w ++ ) {
+                   let title3 = data.articles[w].title;
+                   let image3 = data.articles[w].urlToImage
+                   let newsurl3 = data.articles[w].url
+                   document.getElementById('onecorner').innerHTML +=`
+                   <div class="o-side"> 
+                       <div> <img src="${image3}" width="100%"> </div>
+                       <div>
+                           ${title3} <br>
+                           <a href="${newsurl3}" target="_blank"> >> Read more </a>
+                       </div>
+                   </div>
+                  `
+               }
+
+               for(let e = 15; e < 18; e ++ ) {
+                   let title4 = data.articles[e].title;
+                   let image4 = data.articles[e].urlToImage
+                   let newsurl4 = data.articles[e].url
+                   document.getElementById('onecorner-2').innerHTML +=`
+                   <div class="o-side"> 
+                       <div> <img src="${image4}" width="100%"> </div>
+                       <div>
+                           ${title4} <br>
+                           <a href="${newsurl4}" target="_blank"> >> Read more </a>
+                       </div>
+                   </div>
+                  `
+               }
+               
+
+               // loop before footer 
+               for(let p = 4 ; p < 10 ; p++) {
+                   let title5 = data.articles[p].title;
+                   let image5 = data.articles[p].urlToImage
+                   let newsurl5 = data.articles[p].url
+                   document.getElementById('demo').innerHTML +=`
+                   <div class="o-4div"> 
+                       <img src="${image5}" width="100%" height="100px">
+                       <div> ${title5}</div>
+                       <div>
+                           <a href="${newsurl5}" target="_blank"> >> Read more </a>
+                       </div>
+                   </div>
+                  `
+               }
+
+
+
+           });
+</script>
+</body>
+</html>
